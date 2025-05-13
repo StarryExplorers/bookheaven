@@ -1,49 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BookHeaven</title>
-  <link rel="stylesheet" BookHeaven Welcome to BookHeaven 
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header>
+    <img src="https://i.imgur.com/sfC1cPU.png" alt="BookHeaven Logo" class="logo" />
+    <h1>Welcome to BookHeaven</h1>
+    <p>Where stories live forever</p>
+    <nav>
+      <button onclick="navigate('home')">Home</button>
+      <button onclick="navigate('upload')">Upload Book</button>
+      <button onclick="navigate('explore')">Explore</button>
+      <button onclick="navigate('search')">Search</button>
+    </nav>
+  </header>  <main>
+    <!-- Home Section -->
+    <section id="home" class="page active">
+      <h2>Featured Books</h2>
+      <div id="featuredBooks"></div>
+    </section><!-- Upload Section -->
+<section id="upload" class="page">
+  <h2>Upload Your Book</h2>
+  <form id="uploadForm">
+    <label>Book Title: <input type="text" id="bookTitle" required></label><br>
+    <label>Author: <input type="text" id="bookAuthor" required></label><br>
+    <label>Description:<br><textarea id="bookDesc" rows="4" required></textarea></label><br>
+    <label>Upload PDF: <input type="file" id="bookFile" accept=".pdf" required></label><br>
+    <button type="submit">Submit</button>
+  </form>
+</section>
 
-Where stories live forever
+<!-- Explore Section -->
+<section id="explore" class="page">
+  <h2>All Books</h2>
+  <div id="bookList"></div>
+</section>
 
-Home Upload Book Explore Search Featured Books 
+<!-- Search Section -->
+<section id="search" class="page">
+  <h2>Search for a Book</h2>
+  <input type="text" id="searchInput" placeholder="Enter title or author" />
+  <button onclick="searchBooks()">Search</button>
+  <div id="searchResults"></div>
+</section>
 
-<!-- Upload Section --> <section id="upload" class="page"> <h2>Upload Your Book</h2> <form id="uploadForm"> <label>Book Title: <input type="text" id="bookTitle" required></label><br> <label>Author: <input type="text" id="bookAuthor" required></label><br> <label>Description:<br><textarea id="bookDesc" rows="4" required></textarea></label><br> <label>Upload PDF: <input type="file" id="bookFile" accept=".pdf" required></label><br> <button type="submit">Submit</button> </form> </section> <!-- Explore Section --> <section id="explore" class="page"> <h2>All Books</h2> <div id="bookList"></div> </section> <!-- Search Section --> <section id="search" class="page"> <h2>Search for a Book</h2> <input type="text" id="searchInput" placeholder="Enter title or author" /> <button onclick="searchBooks()">Search</button> <div id="searchResults"></div> </section> 
+  </main>  <footer>
+    <p>BookHeaven &copy; 2025 | Made with love by Empress Spark</p>
+  </footer>  <script>
+    let books = JSON.parse(localStorage.getItem('books') || '[]');
 
-BookHeaven © 2025 | Made with love by Empress Spark
+    function navigate(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
 
-let books = JSON.parse(localStorage.getItem('books') || '[]'); function navigate(pageId) { document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(pageId).classList.add('active'); } document.getElementById('uploadForm').addEventListener('submit', function(e) { e.preventDefault(); const title = document.getElementById('bookTitle').value; const author = document.getElementById('bookAuthor').value; const desc = document.getElementById('bookDesc').value; const file = document.getElementById('bookFile').files[0]; if (!file) return alert('Please upload a file.'); const reader = new FileReader(); reader.onload = function(evt) { const book = { title, author, desc, fileUrl: evt.target.result }; books.push(book); localStorage.setItem('books', JSON.stringify(books)); alert('Book uploaded!'); document.getElementById('uploadForm').reset(); loadBooks(); }; reader.readAsDataURL(file); }); function loadBooks() { const list = document.getElementById('bookList'); list.innerHTML = ''; books.forEach((book, i) => { list.innerHTML += ` 
+    document.getElementById('uploadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const title = document.getElementById('bookTitle').value;
+      const author = document.getElementById('bookAuthor').value;
+      const desc = document.getElementById('bookDesc').value;
+      const file = document.getElementById('bookFile').files[0];
 
-${book.title} 
+      if (!file) return alert('Please upload a file.');
 
-Author: ${book.author}
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const book = {
+          title,
+          author,
+          desc,
+          fileUrl: evt.target.result
+        };
+        books.push(book);
+        localStorage.setItem('books', JSON.stringify(books));
+        alert('Book uploaded!');
+        document.getElementById('uploadForm').reset();
+        loadBooks();
+      };
+      reader.readAsDataURL(file);
+    });
 
-${book.desc}
+    function loadBooks() {
+      const list = document.getElementById('bookList');
+      list.innerHTML = '';
+      books.forEach((book, i) => {
+        list.innerHTML += `
+          <div class="book">
+            <h3>${book.title}</h3>
+            <p><strong>Author:</strong> ${book.author}</p>
+            <p>${book.desc}</p>
+            <a href="${book.fileUrl}" download>Download PDF</a>
+          </div>`;
+      });
+    }
 
-Download PDF 
+    function searchBooks() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const results = books.filter(b =>
+        b.title.toLowerCase().includes(query) || b.author.toLowerCase().includes(query)
+      );
+      const container = document.getElementById('searchResults');
+      container.innerHTML = results.length ? '' : '<p>No results found.</p>';
+      results.forEach(book => {
+        container.innerHTML += `
+          <div class="book">
+            <h3>${book.title}</h3>
+            <p><strong>Author:</strong> ${book.author}</p>
+            <p>${book.desc}</p>
+            <a href="${book.fileUrl}" download>Download PDF</a>
+          </div>`;
+      });
+    }
 
-`; }); } function searchBooks() { const query = document.getElementById('searchInput').value.toLowerCase(); const results = books.filter(b => b.title.toLowerCase().includes(query) || b.author.toLowerCase().includes(query) ); const container = document.getElementById('searchResults'); container.innerHTML = results.length ? '' : '
+    function showFeatured() {
+      const container = document.getElementById('featuredBooks');
+      container.innerHTML = '';
+      books.slice(0, 3).forEach(book => {
+        container.innerHTML += `
+          <div class="book">
+            <h3>${book.title}</h3>
+            <p>${book.desc}</p>
+            <a href="${book.fileUrl}" download>Download</a>
+          </div>`;
+      });
+    }
 
-No results found.
-
-'; results.forEach(book => { container.innerHTML += ` 
-
-${book.title} 
-
-Author: ${book.author}
-
-${book.desc}
-
-Download PDF 
-
-`; }); } function showFeatured() { const container = document.getElementById('featuredBooks'); container.innerHTML = ''; books.slice(0, 3).forEach(book => { container.innerHTML += ` 
-
-${book.title} 
-
-${book.desc}
-
-Download 
-
-`; }); } loadBooks(); showFeatured(); 
+    loadBooks();
+    showFeatured();
+  </script></body>
+</html>
