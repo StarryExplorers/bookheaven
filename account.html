@@ -1,85 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Account - BookHeaven</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="Screenshot_20250514-061346_Gallery.jpg" type="image/jpeg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - BookHeaven</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="main-header">
-    <div class="container header-content">
-      <img src="Screenshot_20250514-061346_Gallery.jpg" alt="BookHeaven Logo" class="logo" />
-      <h1>BookHeaven</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="search.html">Search</a></li>
-          <li><a href="upload.html">Upload</a></li>
-          <li><a href="account.html" class="active">My Account</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="BookHeaven Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="search.html">Search</a>
+                <a href="upload.html">Upload Book</a>
+                <a href="account.html">My Account</a>
+                <button id="sign-out-btn" onclick="signOut()">Sign Out</button>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="account-info">
+            <h1>Your Account</h1>
+            <p id="user-display">Loading...</p>
+            <h3>My Favorites</h3>
+            <div id="favorites-list">
+                <!-- Display favorite books here -->
+            </div>
+            <h3>My Uploaded Books</h3>
+            <div id="uploaded-books-list">
+                <!-- Display uploaded books here -->
+            </div>
+        </section>
+    </main>
 
-  <section class="account-section">
-    <h2>Welcome to Your Account</h2>
-    <p>Manage your profile, preferences, and log out anytime!</p>
+    <footer>
+        <p>&copy; 2025 BookHeaven. All Rights Reserved.</p>
+    </footer>
 
-    <!-- Login & Register Forms -->
-    <div class="auth-container">
-      <div class="auth-form" id="login-form">
-        <h3>Login</h3>
-        <form id="loginForm">
-          <label for="login-email">Email:</label>
-          <input type="email" id="login-email" placeholder="Enter your email" required />
-          
-          <label for="login-password">Password:</label>
-          <input type="password" id="login-password" placeholder="Enter your password" required />
-          
-          <button type="submit" class="btn-primary">Log In</button>
-        </form>
-        <p><a href="#">Forgot Password?</a></p>
-        <p>Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a></p>
-      </div>
-
-      <div class="auth-form" id="register-form" style="display: none;">
-        <h3>Register</h3>
-        <form id="registerForm">
-          <label for="register-email">Email:</label>
-          <input type="email" id="register-email" placeholder="Enter your email" required />
-          
-          <label for="register-password">Password:</label>
-          <input type="password" id="register-password" placeholder="Choose a password" required />
-          
-          <label for="register-confirm-password">Confirm Password:</label>
-          <input type="password" id="register-confirm-password" placeholder="Confirm your password" required />
-          
-          <button type="submit" class="btn-primary">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
-      </div>
-    </div>
-
-    <!-- Google Sign-In -->
-    <div class="google-signin-container">
-      <h3>Or Sign In With Google</h3>
-      <button class="google-signin-btn" id="google-signin-btn">Sign in with Google</button>
-    </div>
-
-    <!-- Profile Section (User Details) -->
-    <div class="profile-container" id="profile-container" style="display: none;">
-      <h3>Your Profile</h3>
-      <p><strong>Email:</strong> <span id="user-email">user@example.com</span></p>
-      <button class="btn-secondary" onclick="logout()">Log Out</button>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p>&copy; 2025 BookHeaven. Made with sparkle by Empress Spark!</p>
-  </footer>
-
-  <script src="account.js"></script>
+    <script src="script.js"></script>
 </body>
-  </html>
+</html>
