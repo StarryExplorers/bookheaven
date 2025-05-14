@@ -1,93 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#6200ea" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="logo.png" type="image/png" />
-  <title>BookHeaven | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <title>StarryExplorers Library</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="icon.jpg" type="image/jpeg" />
+  <link rel="manifest" href="manifest.json" />
+  <script src="script.js" defer></script>
 </head>
-
 <body>
   <aside class="sidebar">
-    <div class="logo-area">
-      <img src="logo.png" alt="BookHeaven" class="logo" />
-      <h1>BookHeaven</h1>
+    <div class="sidebar-header">
+      <img src="icon.jpg" alt="Logo" class="sidebar-logo" />
+      <h2>Starry</h2>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="search.html">Search</a></li>
-        <li><a href="upload.html">Upload Books</a></li>
-        <li><a href="dashboard.html">My Library</a></li>
-        <li><a href="login.html">Login / Sign Up</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-item active">Home</a>
+      <a href="search.html" class="nav-item">Search</a>
+      <a href="upload.html" class="nav-item">Upload</a>
+      <a href="account.html" class="nav-item">Account</a>
+      <a href="library.html" class="nav-item">My Library</a>
+      <a href="collections.html" class="nav-item">Collections</a>
     </nav>
-    <footer>
-      <button onclick="signOut()">Sign Out</button>
-    </footer>
+    <div class="sidebar-footer">
+      <button onclick="logout()" class="signout-btn">Sign Out</button>
+    </div>
   </aside>
 
-  <main class="content">
-    <header class="hero">
-      <h2>Welcome to BookHeaven</h2>
-      <p>Your ultimate destination for books, knowledge, and magic</p>
-      <a href="search.html" class="cta">Explore Now</a>
+  <main class="main-content">
+    <header class="main-header">
+      <h1>Welcome to StarryExplorers Library</h1>
+      <p>Read. Upload. Explore. The universe of books awaits you.</p>
     </header>
 
-    <section class="features">
-      <h3>Why You'll Love BookHeaven</h3>
-      <div class="grid">
-        <div class="card">
-          <h4>Smart Search</h4>
-          <p>Filter by author, genre, year, rating. Find exactly what you need.</p>
-        </div>
-        <div class="card">
-          <h4>Upload & Share</h4>
-          <p>Add your own books, set tags, covers, and formats.</p>
-        </div>
-        <div class="card">
-          <h4>Read Online or Offline</h4>
-          <p>Use our built-in reader or download in your favorite format.</p>
-        </div>
-        <div class="card">
-          <h4>Track Progress</h4>
-          <p>Save reading progress, bookmarks, and reviews.</p>
-        </div>
-        <div class="card">
-          <h4>Gamified Experience</h4>
-          <p>Earn badges, levels, and share your journey!</p>
-        </div>
-        <div class="card">
-          <h4>Text-to-Speech</h4>
-          <p>Let BookHeaven read to you while you chill.</p>
-        </div>
+    <section class="carousel">
+      <h2>Featured Books</h2>
+      <div class="carousel-track">
+        <div class="book-card glow">The Adventure of the Missing Star</div>
+        <div class="book-card glow">Whispers in the Future</div>
+        <div class="book-card glow">Beyond the Pages</div>
+        <div class="book-card glow">AI and Me</div>
       </div>
     </section>
 
-    <section class="featured">
-      <h3>Featured Book of the Day</h3>
-      <div class="book-highlight">
-        <img src="https://covers.openlibrary.org/b/id/10521240-L.jpg" alt="Featured Book">
-        <div>
-          <h4>The Secret Garden</h4>
-          <p>A timeless classic you can read right now for free.</p>
-          <a href="book.html?id=secret-garden" class="btn">Read Now</a>
-        </div>
+    <section class="actions">
+      <div class="action-card gradient upload-card">
+        <h3>Upload Books</h3>
+        <p>Share your stories or rare finds with the world.</p>
+        <a href="upload.html" class="btn">Upload</a>
+      </div>
+      <div class="action-card gradient explore-card">
+        <h3>Explore Library</h3>
+        <p>Dive into millions of free books, classics, and user picks.</p>
+        <a href="search.html" class="btn">Search</a>
+      </div>
+      <div class="action-card gradient account-card">
+        <h3>Your Account</h3>
+        <p>View saved books, reading history, and edit your profile.</p>
+        <a href="account.html" class="btn">My Account</a>
       </div>
     </section>
+
+    <footer class="main-footer">
+      <p>Made with magic by Empress Spark - 2025</p>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Help</a>
+      </div>
+    </footer>
   </main>
-
-  <script>
-    function signOut() {
-      alert('Signed out!');
-    }
-  </script>
 </body>
-
-</html>
+  </html>
