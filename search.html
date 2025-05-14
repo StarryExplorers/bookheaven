@@ -3,65 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Search - BookHeaven</title>
+    <title>Search Results - BookHeaven</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="BookHeaven Logo" class="logo">
-            <h1>Welcome to BookHeaven</h1>
-        </div>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="search.html">Search</a></li>
-                <li><a href="upload.html">Upload Books</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-                <li><a href="profile.html">Your Account</a></li>
-            </ul>
+            <div class="logo">
+                <img src="logo.png" alt="BookHeaven Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="search.html">Search</a>
+                <a href="upload.html">Upload Book</a>
+                <a href="account.html">My Account</a>
+                <button id="sign-out-btn" onclick="signOut()">Sign Out</button>
+            </div>
         </nav>
     </header>
 
-    <!-- Search Section -->
-    <section id="search-section">
-        <h2>Search for Books</h2>
-        
-        <!-- Search Bar -->
-        <input type="text" id="search-bar" placeholder="Search books by title, author, or genre...">
-        
-        <!-- Category Filter -->
-        <select id="category-filter">
-            <option value="all">All Categories</option>
-            <option value="fiction">Fiction</option>
-            <option value="nonfiction">Non-Fiction</option>
-            <option value="history">History</option>
-            <option value="science">Science</option>
-            <option value="biography">Biography</option>
-        </select>
-        
-        <!-- Search Button -->
-        <button id="search-btn">Search</button>
-    </section>
-
-    <!-- Book Results Section -->
-    <section id="book-results">
-        <div class="book" id="book-1">
-            <img src="book1.jpg" alt="Book Cover">
-            <h3>Book Title 1</h3>
-            <p>Author: Author Name</p>
-            <p>Category: Fiction</p>
-            <button class="add-to-favorites">Add to Favorites</button>
-        </div>
-        <!-- More books can be dynamically added here -->
-    </section>
+    <main>
+        <section class="search-results">
+            <h1>Search Results</h1>
+            <input type="text" id="search-input" placeholder="Search for books..." oninput="searchBooks()">
+            <div id="search-results">
+                <!-- Display search results dynamically -->
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2025 BookHeaven. All Rights Reserved.</p>
     </footer>
 
-    <script src="search.js"></script>
+    <script src="script.js"></script>
 </body>
-  </html>
+</html>
