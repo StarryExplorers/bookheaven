@@ -1,58 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Upload Books - BookHeaven</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="Screenshot_20250514-061346_Gallery.jpg" type="image/jpeg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Book - BookHeaven</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="main-header">
-    <div class="container header-content">
-      <img src="Screenshot_20250514-061346_Gallery.jpg" alt="BookHeaven Logo" class="logo" />
-      <h1>BookHeaven</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="search.html">Search</a></li>
-          <li><a href="upload.html" class="active">Upload</a></li>
-          <li><a href="account.html">My Account</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="BookHeaven Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="search.html">Search</a>
+                <a href="upload.html">Upload Book</a>
+                <a href="account.html">My Account</a>
+                <button id="sign-out-btn" onclick="signOut()">Sign Out</button>
+            </div>
+        </nav>
+    </header>
 
-  <section class="upload-section">
-    <h2>Upload a New Book</h2>
-    <form id="uploadForm" class="upload-form">
-      <label for="title">Book Title:</label>
-      <input type="text" id="title" name="title" required />
+    <main>
+        <section class="upload-form">
+            <h1>Upload Your Book</h1>
+            <form onsubmit="uploadBook(event)">
+                <label for="book-title">Book Title:</label>
+                <input type="text" id="book-title" required>
 
-      <label for="author">Author:</label>
-      <input type="text" id="author" name="author" required />
+                <label for="book-author">Book Author:</label>
+                <input type="text" id="book-author" required>
 
-      <label for="genre">Genre:</label>
-      <select id="genre" name="genre" required>
-        <option value="">Choose a genre</option>
-        <option value="fiction">Fiction</option>
-        <option value="fantasy">Fantasy</option>
-        <option value="non-fiction">Non-fiction</option>
-        <option value="adventure">Adventure</option>
-        <option value="biography">Biography</option>
-      </select>
+                <label for="book-genre">Book Genre:</label>
+                <input type="text" id="book-genre">
 
-      <label for="file">Upload Book File (PDF/ePub):</label>
-      <input type="file" id="file" name="file" accept=".pdf,.epub" />
+                <label for="book-file">Upload Book File:</label>
+                <input type="file" id="book-file" required>
 
-      <button type="submit" class="btn-primary">Upload Book</button>
-    </form>
-  </section>
+                <button type="submit">Upload Book</button>
+            </form>
+        </section>
+    </main>
 
-  <footer class="footer">
-    <p>&copy; 2025 BookHeaven. Made with sparkle by Empress Spark!</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 BookHeaven. All Rights Reserved.</p>
+    </footer>
 
-  <script src="upload.js"></script>
+    <script src="script.js"></script>
 </body>
-  </html>
+                  </html>
