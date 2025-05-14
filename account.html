@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account - BookHeaven</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>My Account | BookHeaven</title>
+  <link rel="stylesheet" href="auth.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="logo.png" alt="BookHeaven Logo">
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="search.html">Search</a>
-                <a href="upload.html">Upload Book</a>
-                <a href="account.html">My Account</a>
-                <button id="sign-out-btn" onclick="signOut()">Sign Out</button>
-            </div>
-        </nav>
-    </header>
-    
-    <main>
-        <section class="account-info">
-            <h1>Your Account</h1>
-            <p id="user-display">Loading...</p>
-            <h3>My Favorites</h3>
-            <div id="favorites-list">
-                <!-- Display favorite books here -->
-            </div>
-            <h3>My Uploaded Books</h3>
-            <div id="uploaded-books-list">
-                <!-- Display uploaded books here -->
-            </div>
-        </section>
-    </main>
+  <div class="auth-container">
+    <h2>My Account</h2>
+    <div id="user-info"></div>
+    <button onclick="logout()">Sign Out</button>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 BookHeaven. All Rights Reserved.</p>
-    </footer>
+  <script>
+    const user = JSON.parse(localStorage.getItem("bookheaven-user"));
+    const loggedIn = localStorage.getItem("loggedIn");
 
-    <script src="script.js"></script>
+    if (!loggedIn || !user) {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("user-info").innerHTML = `
+        <p><strong>Username:</strong> ${user.username}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+      `;
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "login.html";
+    }
+  </script>
 </body>
 </html>
