@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BookHeaven</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="BookHeaven Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="search.html">Search</a>
+                <a href="upload.html">Upload Book</a>
+                <a href="account.html">My Account</a>
+                <button id="sign-out-btn" onclick="signOut()">Sign Out</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h1>Your Dashboard</h1>
+            <div id="my-books">
+                <h3>My Uploaded Books</h3>
+                <!-- Display uploaded books -->
+            </div>
+            <div id="my-favorites">
+                <h3>My Favorites</h3>
+                <!-- Display favorite books -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BookHeaven. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
