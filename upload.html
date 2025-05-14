@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Books - BookHeaven</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="Screenshot_20250514-061346_Gallery.jpg" type="image/jpeg" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="container header-content">
+      <img src="Screenshot_20250514-061346_Gallery.jpg" alt="BookHeaven Logo" class="logo" />
+      <h1>BookHeaven</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="upload.html" class="active">Upload</a></li>
+          <li><a href="account.html">My Account</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="upload-section">
+    <h2>Upload a New Book</h2>
+    <form id="uploadForm" class="upload-form">
+      <label for="title">Book Title:</label>
+      <input type="text" id="title" name="title" required />
+
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required />
+
+      <label for="genre">Genre:</label>
+      <select id="genre" name="genre" required>
+        <option value="">Choose a genre</option>
+        <option value="fiction">Fiction</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="non-fiction">Non-fiction</option>
+        <option value="adventure">Adventure</option>
+        <option value="biography">Biography</option>
+      </select>
+
+      <label for="file">Upload Book File (PDF/ePub):</label>
+      <input type="file" id="file" name="file" accept=".pdf,.epub" />
+
+      <button type="submit" class="btn-primary">Upload Book</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 BookHeaven. Made with sparkle by Empress Spark!</p>
+  </footer>
+
+  <script src="upload.js"></script>
+</body>
+  </html>
