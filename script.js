@@ -1,137 +1,88 @@
-// Global Variables
-let currentUser = null;
-let books = [];  // Array to store books
-let favorites = [];  // User's favorite books
-
-// Show User Info and Sign In/Out Button
-function updateUserInfo() {
-    const userDisplay = document.getElementById('user-display');
-    const signInButton = document.getElementById('sign-in-btn');
-    const signOutButton = document.getElementById('sign-out-btn');
-    
-    if (currentUser) {
-        userDisplay.textContent = `Welcome, ${currentUser.name}`;
-        signInButton.style.display = 'none';
-        signOutButton.style.display = 'block';
-    } else {
-        userDisplay.textContent = 'Welcome to BookHeaven';
-        signInButton.style.display = 'block';
-        signOutButton.style.display = 'none';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – BookHeaven</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-}
 
-// User Sign In with Google or Email
-function signIn(provider) {
-    if (provider === 'google') {
-        // Simulate Google login (you can integrate actual login later)
-        currentUser = { name: 'User (Google)', email: 'user@google.com' };
-    } else {
-        // Simulate email login
-        currentUser = { name: 'User (Email)', email: 'user@email.com' };
+    .login-box {
+      background: white;
+      padding: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
     }
-    updateUserInfo();
-}
 
-// Sign Out User
-function signOut() {
-    currentUser = null;
-    updateUserInfo();
-}
-
-// Upload Book
-function uploadBook(event) {
-    event.preventDefault();
-    const bookTitle = document.getElementById('book-title').value;
-    const bookAuthor = document.getElementById('book-author').value;
-    const bookGenre = document.getElementById('book-genre').value;
-    const bookFile = document.getElementById('book-file').files[0];
-
-    if (bookTitle && bookAuthor && bookFile) {
-        const newBook = {
-            title: bookTitle,
-            author: bookAuthor,
-            genre: bookGenre,
-            file: bookFile,
-        };
-        books.push(newBook);
-        alert('Book uploaded successfully!');
-        displayBooks();
-    } else {
-        alert('Please fill all fields.');
+    h2 {
+      color: #333;
+      margin-bottom: 1rem;
     }
-}
 
-// Display Books
-function displayBooks() {
-    const bookContainer = document.getElementById('book-list');
-    bookContainer.innerHTML = '';
+    #google-signin-button {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
 
-    books.forEach((book, index) => {
-        const bookElement = document.createElement('div');
-        bookElement.classList.add('book');
-        bookElement.innerHTML = `
-            <h3>${book.title}</h3>
-            <p>Author: ${book.author}</p>
-            <p>Genre: ${book.genre}</p>
-            <button onclick="viewBook(${index})">View Book</button>
-            <button onclick="addToFavorites(${index})">Add to Favorites</button>
-        `;
-        bookContainer.appendChild(bookElement);
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Welcome to BookHeaven</h2>
+    <div id="google-signin-button"></div>
+    <p class="note">Sign in with your Google account to continue.</p>
+  </div>
+
+  <script>
+    function handleCredentialResponse(response) {
+      const responsePayload = decodeJwtResponse(response.credential);
+      console.log("Logged in as: " + responsePayload.name);
+
+      // Store the user's name or email if needed
+      localStorage.setItem("userName", responsePayload.name);
+      localStorage.setItem("userEmail", responsePayload.email);
+
+      // Redirect after login
+      window.location.href = "home.html";
+    }
+
+    function decodeJwtResponse(credential) {
+      const base64Url = credential.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+
+      return JSON.parse(jsonPayload);
+    }
+
+    google.accounts.id.initialize({
+      client_id: "361831602073-jjr8g1u741gfihkp88rv2out8a37gka1.apps.googleusercontent.com",
+      callback: handleCredentialResponse
     });
-}
 
-// View Book
-function viewBook(index) {
-    const book = books[index];
-    alert(`Opening book: ${book.title}`);
-    // Implement logic to display book content or PDF reader
-}
-
-// Add Book to Favorites
-function addToFavorites(index) {
-    const book = books[index];
-    if (!favorites.includes(book)) {
-        favorites.push(book);
-        alert('Book added to favorites!');
-    } else {
-        alert('This book is already in your favorites.');
-    }
-}
-
-// Search Books
-function searchBooks() {
-    const searchTerm = document.getElementById('search-input').value.toLowerCase();
-    const searchResults = books.filter(book => 
-        book.title.toLowerCase().includes(searchTerm) || 
-        book.author.toLowerCase().includes(searchTerm)
+    google.accounts.id.renderButton(
+      document.getElementById("google-signin-button"),
+      { theme: "outline", size: "large" }
     );
-    displaySearchResults(searchResults);
-}
-
-// Display Search Results
-function displaySearchResults(searchResults) {
-    const resultContainer = document.getElementById('search-results');
-    resultContainer.innerHTML = '';
-    
-    if (searchResults.length === 0) {
-        resultContainer.innerHTML = '<p>No results found</p>';
-        return;
-    }
-
-    searchResults.forEach(book => {
-        const bookElement = document.createElement('div');
-        bookElement.classList.add('book');
-        bookElement.innerHTML = `
-            <h3>${book.title}</h3>
-            <p>Author: ${book.author}</p>
-            <p>Genre: ${book.genre}</p>
-        `;
-        resultContainer.appendChild(bookElement);
-    });
-}
-
-// Initialize the App
-window.onload = () => {
-    updateUserInfo();  // Update user info on page load
-    displayBooks();  // Display uploaded books
-};
+  </script>
+</body>
+</html>
