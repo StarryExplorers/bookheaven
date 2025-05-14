@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Search Books - BookHeaven</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="Screenshot_20250514-061346_Gallery.jpg" type="image/jpeg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search - BookHeaven</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="main-header">
-    <div class="container header-content">
-      <img src="Screenshot_20250514-061346_Gallery.jpg" alt="BookHeaven Logo" class="logo" />
-      <h1>BookHeaven</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="search.html" class="active">Search</a></li>
-          <li><a href="upload.html">Upload</a></li>
-          <li><a href="account.html">My Account</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="BookHeaven Logo" class="logo">
+            <h1>Welcome to BookHeaven</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="upload.html">Upload Books</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="profile.html">Your Account</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section class="search-section">
-    <h2>Find Your Next Favorite Book</h2>
-    <form class="search-form">
-      <input type="text" id="searchQuery" placeholder="Search by title, author, or genre..." />
-      <button type="submit" class="btn-primary">Search</button>
-    </form>
-
-    <div class="filters">
-      <label>Genre:
-        <select id="genreFilter">
-          <option value="all">All</option>
-          <option value="fiction">Fiction</option>
-          <option value="non-fiction">Non-fiction</option>
-          <option value="fantasy">Fantasy</option>
-          <option value="adventure">Adventure</option>
-          <option value="biography">Biography</option>
+    <!-- Search Section -->
+    <section id="search-section">
+        <h2>Search for Books</h2>
+        
+        <!-- Search Bar -->
+        <input type="text" id="search-bar" placeholder="Search books by title, author, or genre...">
+        
+        <!-- Category Filter -->
+        <select id="category-filter">
+            <option value="all">All Categories</option>
+            <option value="fiction">Fiction</option>
+            <option value="nonfiction">Non-Fiction</option>
+            <option value="history">History</option>
+            <option value="science">Science</option>
+            <option value="biography">Biography</option>
         </select>
-      </label>
-      <label>Sort by:
-        <select id="sortBy">
-          <option value="relevance">Relevance</option>
-          <option value="newest">Newest</option>
-          <option value="popular">Most Popular</option>
-        </select>
-      </label>
-    </div>
-  </section>
+        
+        <!-- Search Button -->
+        <button id="search-btn">Search</button>
+    </section>
 
-  <section class="search-results">
-    <h3>Results</h3>
-    <div id="resultsContainer" class="book-grid">
-      <!-- Results will appear here -->
-    </div>
-  </section>
+    <!-- Book Results Section -->
+    <section id="book-results">
+        <div class="book" id="book-1">
+            <img src="book1.jpg" alt="Book Cover">
+            <h3>Book Title 1</h3>
+            <p>Author: Author Name</p>
+            <p>Category: Fiction</p>
+            <button class="add-to-favorites">Add to Favorites</button>
+        </div>
+        <!-- More books can be dynamically added here -->
+    </section>
 
-  <footer class="footer">
-    <p>&copy; 2025 BookHeaven. Powered by Empress Spark's imagination!</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 BookHeaven. All Rights Reserved.</p>
+    </footer>
 
-  <script src="search.js"></script>
+    <script src="search.js"></script>
 </body>
   </html>
