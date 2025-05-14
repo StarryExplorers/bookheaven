@@ -1,20 +1,19 @@
 {
-  "name": "Book Heaven",
+  "name": "BookHeaven",
   "short_name": "BookHeaven",
-  "start_url": "/",
+  "description": "Welcome to BookHeaven - A place to upload, share, and explore books.",
+  "start_url": "https://StarryExplorers.github.io/BookHeaven/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4A90E2",
-  "orientation": "portrait",
-  "description": "Your dreamy online library to explore, upload, and read books freely.",
+  "theme_color": "#000000",
   "icons": [
     {
-      "src": "Screenshot_20250514-061346_Gallery (1).jpg",
+      "src": "Screenshot_20250514-061346_Gallery.jpg",
       "sizes": "192x192",
       "type": "image/jpeg"
     },
     {
-      "src": "Screenshot_20250514-061346_Gallery.jpg",
+      "src": "Screenshot_20250514-061346_Gallery (1).jpg",
       "sizes": "512x512",
       "type": "image/jpeg"
     }
