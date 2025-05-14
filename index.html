@@ -1,139 +1,81 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BookHeaven</title>
+  <meta name="theme-color" content="#5e60ce"/>
+  <title>BookHeaven - Home</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json">
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="Screenshot_20250514-061346_Gallery.jpg" type="image/jpeg">
+  <link rel="icon" href="Screenshot_20250514-061346_Gallery.jpg" type="image/jpeg" />
 </head>
 <body>
-  <header>
-    <h1>
-  <img src="Screenshot_20250514-061346_Gallery.jpg" alt="BookHeaven Logo" class="logo">
-  Welcome to BookHeaven
-</h1>
-    <p>Where stories live forever</p>
-    <nav>
-      <button onclick="navigate('home')">Home</button>
-      <button onclick="navigate('upload')">Upload Book</button>
-      <button onclick="navigate('explore')">Explore</button>
-      <button onclick="navigate('search')">Search</button>
-    </nav>
-  </header>  <main>
-    <!-- Home Section -->
-    <section id="home" class="page active">
-      <h2>Featured Books</h2>
-      <div id="featuredBooks"></div>
-    </section><!-- Upload Section -->
-<section id="upload" class="page">
-  <h2>Upload Your Book</h2>
-  <form id="uploadForm">
-    <label>Book Title: <input type="text" id="bookTitle" required></label><br>
-    <label>Author: <input type="text" id="bookAuthor" required></label><br>
-    <label>Description:<br><textarea id="bookDesc" rows="4" required></textarea></label><br>
-    <label>Upload PDF: <input type="file" id="bookFile" accept=".pdf" required></label><br>
-    <button type="submit">Submit</button>
-  </form>
-</section>
+  <header class="main-header">
+    <div class="container header-content">
+      <img src="Screenshot_20250514-061346_Gallery.jpg" alt="BookHeaven Logo" class="logo" />
+      <h1>BookHeaven</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="account.html">My Account</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<!-- Explore Section -->
-<section id="explore" class="page">
-  <h2>All Books</h2>
-  <div id="bookList"></div>
-</section>
+  <section class="hero">
+    <h2>Welcome to BookHeaven!</h2>
+    <p>Read, explore, and share millions of books—all in one colorful place!</p>
+    <a href="search.html" class="btn-primary">Start Exploring</a>
+  </section>
 
-<!-- Search Section -->
-<section id="search" class="page">
-  <h2>Search for a Book</h2>
-  <input type="text" id="searchInput" placeholder="Enter title or author" />
-  <button onclick="searchBooks()">Search</button>
-  <div id="searchResults"></div>
-</section>
+  <section class="features">
+    <div class="feature">
+      <h3>Browse Books</h3>
+      <p>Search through a massive collection of free and premium books.</p>
+    </div>
+    <div class="feature">
+      <h3>Upload Your Own</h3>
+      <p>Contribute to the collection by uploading your own books and stories.</p>
+    </div>
+    <div class="feature">
+      <h3>Log In & Sync</h3>
+      <p>Sign in with Google or email to save favorites and sync across devices.</p>
+    </div>
+    <div class="feature">
+      <h3>Multilingual Support</h3>
+      <p>Read books in multiple languages with instant translation tools.</p>
+    </div>
+  </section>
 
-  </main>  <footer>
-    <p>BookHeaven &copy; 2025 | Made with love by Empress Spark</p>
-  </footer>  <script>
-    let books = JSON.parse(localStorage.getItem('books') || '[]');
+  <section class="featured-books">
+    <h2>Featured Books</h2>
+    <div class="book-grid">
+      <div class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10523359-L.jpg" alt="Book cover">
+        <h4>Adventures of Sherlock Holmes</h4>
+        <p>By Arthur Conan Doyle</p>
+      </div>
+      <div class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10583201-L.jpg" alt="Book cover">
+        <h4>The Secret Garden</h4>
+        <p>By Frances Hodgson Burnett</p>
+      </div>
+      <div class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10446720-L.jpg" alt="Book cover">
+        <h4>Treasure Island</h4>
+        <p>By Robert Louis Stevenson</p>
+      </div>
+    </div>
+  </section>
 
-    function navigate(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
-    }
+  <footer class="footer">
+    <p>&copy; 2025 BookHeaven. Created by Empress Spark. All rights reserved.</p>
+    <p>Built with love, code, and a pinch of stardust.</p>
+  </footer>
 
-    document.getElementById('uploadForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const title = document.getElementById('bookTitle').value;
-      const author = document.getElementById('bookAuthor').value;
-      const desc = document.getElementById('bookDesc').value;
-      const file = document.getElementById('bookFile').files[0];
-
-      if (!file) return alert('Please upload a file.');
-
-      const reader = new FileReader();
-      reader.onload = function(evt) {
-        const book = {
-          title,
-          author,
-          desc,
-          fileUrl: evt.target.result
-        };
-        books.push(book);
-        localStorage.setItem('books', JSON.stringify(books));
-        alert('Book uploaded!');
-        document.getElementById('uploadForm').reset();
-        loadBooks();
-      };
-      reader.readAsDataURL(file);
-    });
-
-    function loadBooks() {
-      const list = document.getElementById('bookList');
-      list.innerHTML = '';
-      books.forEach((book, i) => {
-        list.innerHTML += `
-          <div class="book">
-            <h3>${book.title}</h3>
-            <p><strong>Author:</strong> ${book.author}</p>
-            <p>${book.desc}</p>
-            <a href="${book.fileUrl}" download>Download PDF</a>
-          </div>`;
-      });
-    }
-
-    function searchBooks() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const results = books.filter(b =>
-        b.title.toLowerCase().includes(query) || b.author.toLowerCase().includes(query)
-      );
-      const container = document.getElementById('searchResults');
-      container.innerHTML = results.length ? '' : '<p>No results found.</p>';
-      results.forEach(book => {
-        container.innerHTML += `
-          <div class="book">
-            <h3>${book.title}</h3>
-            <p><strong>Author:</strong> ${book.author}</p>
-            <p>${book.desc}</p>
-            <a href="${book.fileUrl}" download>Download PDF</a>
-          </div>`;
-      });
-    }
-
-    function showFeatured() {
-      const container = document.getElementById('featuredBooks');
-      container.innerHTML = '';
-      books.slice(0, 3).forEach(book => {
-        container.innerHTML += `
-          <div class="book">
-            <h3>${book.title}</h3>
-            <p>${book.desc}</p>
-            <a href="${book.fileUrl}" download>Download</a>
-          </div>`;
-      });
-    }
-
-    loadBooks();
-    showFeatured();
-  </script></body>
-</html>
+  <script src="script.js"></script>
+</body>
+  </html>
