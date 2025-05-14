@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Books - BookHeaven</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="Screenshot_20250514-061346_Gallery.jpg" type="image/jpeg" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="container header-content">
+      <img src="Screenshot_20250514-061346_Gallery.jpg" alt="BookHeaven Logo" class="logo" />
+      <h1>BookHeaven</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="search.html" class="active">Search</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="account.html">My Account</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="search-section">
+    <h2>Find Your Next Favorite Book</h2>
+    <form class="search-form">
+      <input type="text" id="searchQuery" placeholder="Search by title, author, or genre..." />
+      <button type="submit" class="btn-primary">Search</button>
+    </form>
+
+    <div class="filters">
+      <label>Genre:
+        <select id="genreFilter">
+          <option value="all">All</option>
+          <option value="fiction">Fiction</option>
+          <option value="non-fiction">Non-fiction</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="adventure">Adventure</option>
+          <option value="biography">Biography</option>
+        </select>
+      </label>
+      <label>Sort by:
+        <select id="sortBy">
+          <option value="relevance">Relevance</option>
+          <option value="newest">Newest</option>
+          <option value="popular">Most Popular</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section class="search-results">
+    <h3>Results</h3>
+    <div id="resultsContainer" class="book-grid">
+      <!-- Results will appear here -->
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 BookHeaven. Powered by Empress Spark's imagination!</p>
+  </footer>
+
+  <script src="search.js"></script>
+</body>
+  </html>
