@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard | BookHeaven</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="admin-body">
+  <div class="sidebar">
+    <h2>BookHeaven</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="upload.html">Upload Books</a></li>
+      <li><a href="account.html">Account</a></li>
+      <li class="active"><a href="admin.html">Admin Panel</a></li>
+      <li><a href="settings.html">Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome, Admin! Manage all the BookHeaven magic from here.</p>
+
+    <section class="admin-section">
+      <h2>Book Management</h2>
+      <button onclick="addBook()">Add Book</button>
+      <button onclick="editBook()">Edit Book</button>
+      <button onclick="deleteBook()">Delete Book</button>
+    </section>
+
+    <section class="admin-section">
+      <h2>User Management</h2>
+      <button onclick="viewUsers()">View Users</button>
+      <button onclick="banUser()">Ban User</button>
+      <button onclick="resetPassword()">Reset Password</button>
+    </section>
+
+    <section class="admin-section">
+      <h2>Site Control</h2>
+      <button onclick="updateSite()">Update Site Content</button>
+      <button onclick="sendNotification()">Send Notification</button>
+      <button onclick="viewStats()">View Site Stats</button>
+    </section>
+  </div>
+
+  <script>
+    function addBook() { alert("Add book feature coming soon!"); }
+    function editBook() { alert("Edit book feature coming soon!"); }
+    function deleteBook() { alert("Delete book feature coming soon!"); }
+    function viewUsers() { alert("User list loading..."); }
+    function banUser() { alert("Ban user feature coming soon!"); }
+    function resetPassword() { alert("Reset password feature coming soon!"); }
+    function updateSite() { alert("Site update page coming soon!"); }
+    function sendNotification() { alert("Push notifications activated!"); }
+    function viewStats() { alert("Fetching site stats..."); }
+  </script>
+</body>
+      </html>
