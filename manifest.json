@@ -1,19 +1,20 @@
 {
   "name": "Book Heaven",
   "short_name": "BookHeaven",
-  "description": "A Library of Books! Upload, Download, and Read.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#008080",
+  "theme_color": "#4A90E2",
+  "orientation": "portrait",
+  "description": "Your dreamy online library to explore, upload, and read books freely.",
   "icons": [
     {
-      "src": "icon-192.jpg",
+      "src": "Screenshot_20250514-061346_Gallery (1).jpg",
       "sizes": "192x192",
       "type": "image/jpeg"
     },
     {
-      "src": "icon-512.jpg",
+      "src": "Screenshot_20250514-061346_Gallery.jpg",
       "sizes": "512x512",
       "type": "image/jpeg"
     }
