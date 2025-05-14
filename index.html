@@ -1,81 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="theme-color" content="#5e60ce"/>
-  <title>BookHeaven - Home</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6200ea" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="Screenshot_20250514-061346_Gallery.jpg" type="image/jpeg" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <title>BookHeaven | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <header class="main-header">
-    <div class="container header-content">
-      <img src="Screenshot_20250514-061346_Gallery.jpg" alt="BookHeaven Logo" class="logo" />
+  <aside class="sidebar">
+    <div class="logo-area">
+      <img src="logo.png" alt="BookHeaven" class="logo" />
       <h1>BookHeaven</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="search.html">Search</a></li>
-          <li><a href="upload.html">Upload</a></li>
-          <li><a href="account.html">My Account</a></li>
-        </ul>
-      </nav>
     </div>
-  </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="upload.html">Upload Books</a></li>
+        <li><a href="dashboard.html">My Library</a></li>
+        <li><a href="login.html">Login / Sign Up</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <footer>
+      <button onclick="signOut()">Sign Out</button>
+    </footer>
+  </aside>
 
-  <section class="hero">
-    <h2>Welcome to BookHeaven!</h2>
-    <p>Read, explore, and share millions of books—all in one colorful place!</p>
-    <a href="search.html" class="btn-primary">Start Exploring</a>
-  </section>
+  <main class="content">
+    <header class="hero">
+      <h2>Welcome to BookHeaven</h2>
+      <p>Your ultimate destination for books, knowledge, and magic</p>
+      <a href="search.html" class="cta">Explore Now</a>
+    </header>
 
-  <section class="features">
-    <div class="feature">
-      <h3>Browse Books</h3>
-      <p>Search through a massive collection of free and premium books.</p>
-    </div>
-    <div class="feature">
-      <h3>Upload Your Own</h3>
-      <p>Contribute to the collection by uploading your own books and stories.</p>
-    </div>
-    <div class="feature">
-      <h3>Log In & Sync</h3>
-      <p>Sign in with Google or email to save favorites and sync across devices.</p>
-    </div>
-    <div class="feature">
-      <h3>Multilingual Support</h3>
-      <p>Read books in multiple languages with instant translation tools.</p>
-    </div>
-  </section>
-
-  <section class="featured-books">
-    <h2>Featured Books</h2>
-    <div class="book-grid">
-      <div class="book-card">
-        <img src="https://covers.openlibrary.org/b/id/10523359-L.jpg" alt="Book cover">
-        <h4>Adventures of Sherlock Holmes</h4>
-        <p>By Arthur Conan Doyle</p>
+    <section class="features">
+      <h3>Why You'll Love BookHeaven</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>Smart Search</h4>
+          <p>Filter by author, genre, year, rating. Find exactly what you need.</p>
+        </div>
+        <div class="card">
+          <h4>Upload & Share</h4>
+          <p>Add your own books, set tags, covers, and formats.</p>
+        </div>
+        <div class="card">
+          <h4>Read Online or Offline</h4>
+          <p>Use our built-in reader or download in your favorite format.</p>
+        </div>
+        <div class="card">
+          <h4>Track Progress</h4>
+          <p>Save reading progress, bookmarks, and reviews.</p>
+        </div>
+        <div class="card">
+          <h4>Gamified Experience</h4>
+          <p>Earn badges, levels, and share your journey!</p>
+        </div>
+        <div class="card">
+          <h4>Text-to-Speech</h4>
+          <p>Let BookHeaven read to you while you chill.</p>
+        </div>
       </div>
-      <div class="book-card">
-        <img src="https://covers.openlibrary.org/b/id/10583201-L.jpg" alt="Book cover">
-        <h4>The Secret Garden</h4>
-        <p>By Frances Hodgson Burnett</p>
-      </div>
-      <div class="book-card">
-        <img src="https://covers.openlibrary.org/b/id/10446720-L.jpg" alt="Book cover">
-        <h4>Treasure Island</h4>
-        <p>By Robert Louis Stevenson</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <p>&copy; 2025 BookHeaven. Created by Empress Spark. All rights reserved.</p>
-    <p>Built with love, code, and a pinch of stardust.</p>
-  </footer>
+    <section class="featured">
+      <h3>Featured Book of the Day</h3>
+      <div class="book-highlight">
+        <img src="https://covers.openlibrary.org/b/id/10521240-L.jpg" alt="Featured Book">
+        <div>
+          <h4>The Secret Garden</h4>
+          <p>A timeless classic you can read right now for free.</p>
+          <a href="book.html?id=secret-garden" class="btn">Read Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <script src="script.js"></script>
+  <script>
+    function signOut() {
+      alert('Signed out!');
+    }
+  </script>
 </body>
-  </html>
+
+</html>
