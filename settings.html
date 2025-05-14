@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings | BookHeaven</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="settings-body">
+  <div class="sidebar">
+    <h2>BookHeaven</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="upload.html">Upload Books</a></li>
+      <li><a href="account.html">Account</a></li>
+      <li><a href="admin.html">Admin Panel</a></li>
+      <li class="active"><a href="settings.html">Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h1>Settings</h1>
+    <p>Customize your BookHeaven experience!</p>
+
+    <form class="settings-form">
+      <h2>Appearance</h2>
+      <label>
+        Theme:
+        <select name="theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="bookish">Bookish Mode</option>
+        </select>
+      </label>
+
+      <h2>Notifications</h2>
+      <label>
+        <input type="checkbox" name="email_notifications" checked />
+        Email Notifications
+      </label>
+      <label>
+        <input type="checkbox" name="push_notifications" />
+        Push Notifications
+      </label>
+
+      <h2>Privacy</h2>
+      <label>
+        <input type="checkbox" name="public_profile" />
+        Show my profile publicly
+      </label>
+      <label>
+        <input type="checkbox" name="share_books" checked />
+        Allow others to view my bookshelf
+      </label>
+
+      <h2>Language</h2>
+      <label>
+        Preferred Language:
+        <select name="language">
+          <option>English</option>
+          <option>Spanish</option>
+          <option>French</option>
+          <option>Hindi</option>
+          <option>Custom...</option>
+        </select>
+      </label>
+
+      <button type="submit">Save Settings</button>
+    </form>
+  </div>
+</body>
+</html>
